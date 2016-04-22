@@ -1,4 +1,4 @@
-'use strict';
+	'use strict';
 
 var p2 = require('p2');
 
@@ -23,12 +23,17 @@ var Game = function(loopCallback) {
 	// Create an empty dynamic body 
 	this._ball = new p2.Body({
 	    mass: 5,
-	    position: [0, 10]
+	    position: [5, 10]
 	});
 
 	// Add a circle shape to the body. 
 	var circleShape = new p2.Circle({ radius: 1 });
 	this._ball.addShape(circleShape);
+
+	// Add material to circle shape
+	var ballMaterial = new p2.Material();
+	circleShape.material = ballMaterial;	
+   
 
 	// ...and add the body to the world. 
 	// If we don't add it to the world, it won't be simulated. 
@@ -40,9 +45,23 @@ var Game = function(loopCallback) {
 	})
 
 	var groundShape = new p2.Plane();
-	
 	groundBody.addShape(groundShape);
+
+	var groundMaterial = new p2.Material();
+	groundShape.material = groundMaterial;
+
 	this._world.addBody(groundBody);
+
+	// Contact material
+	var groundVsBall = new p2.ContactMaterial(groundMaterial, ballMaterial, {
+	    // friction
+	    friction: 0.5,
+	    // bounce
+	    restitution: 1
+	    // see p2 docs for other options allowed here
+	});
+
+	this._world.addContactMaterial(groundVsBall);
 };
 
 Game.prototype.init = function() {
