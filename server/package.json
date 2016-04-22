@@ -1,0 +1,29 @@
+{
+  "name": "p2-physic-server-example",
+  "version": "0.0.1",
+  "description": "A simple example of server running p2 physics",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mramonlopez/p2-physic-server-example.git"
+  },
+  "keywords": [
+    "GAME",
+    "SERVER",
+    "P2",
+    "PHYSIC"
+  ],
+  "author": "M. Ramon Lopez Torres",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mramonlopez/p2-physic-server-example/issues"
+  },
+  "homepage": "https://github.com/mramonlopez/p2-physic-server-example#readme",
+  "dependencies": {
+    "p2": "^0.7.1",
+    "websocket": "^1.0.22"
+  }
+}
